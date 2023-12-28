@@ -26,7 +26,7 @@ class AppTicketTabs extends StatelessWidget {
                   borderRadius: BorderRadius.horizontal( left: Radius.circular(AppLayout.getHeight(50)),),
                   color:  Colors.white,
                 ),
-                child: Center(child: Text("Airlines"),)
+                child: Center(child: Text(fristTab),)
             ),
             Gap(20),
             Container(
@@ -36,7 +36,7 @@ class AppTicketTabs extends StatelessWidget {
                   borderRadius: BorderRadius.horizontal( right: Radius.circular(AppLayout.getHeight(50)),),
                   color:  Colors.transparent,
                 ),
-                child: Center(child: Text("Hotels"),)
+                child: Center(child: Text(ScecondTab),)
             ),
 
 

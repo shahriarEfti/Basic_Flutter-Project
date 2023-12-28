@@ -3,6 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:project_test/utils/app_layout.dart';
 import 'package:project_test/utils/app_styles.dart';
+import 'package:project_test/widgets/column_layout.dart';
+import 'package:project_test/widgets/layout_builder_widgets.dart';
 import 'package:project_test/widgets/thick_container.dart';
 
 class TicketView extends StatefulWidget {
@@ -58,25 +60,7 @@ class _TicketViewState extends State<TicketView> {
                           children: [
                             SizedBox(
                               height: AppLayout.getHeight(24),
-                              child: LayoutBuilder(
-                                builder: (BuildContext context, BoxConstraints constraints) {
-                                  return Flex(
-                                    direction: Axis.horizontal,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List.generate(
-                                      (constraints.constrainWidth() / 6).floor(),
-                                          (index) => SizedBox(
-                                        width: 3,
-                                        height: 1,
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                              child: AppLayoutBuilder( sections: 6, isColor: false,)
                             ),
                             Center(
                               child: Transform.rotate(
@@ -194,7 +178,14 @@ class _TicketViewState extends State<TicketView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      AppColumnLayout(firstText: widget.ticket['date'],
+                          secondText: "Date",
+                          alignment: CrossAxisAlignment.start,isColor: widget.isColor,),
+
+                      AppColumnLayout(firstText: widget.ticket['departure_time'],
+                        secondText:"Departure Time",
+                        alignment: CrossAxisAlignment.start,isColor: widget.isColor,),
+                     /* Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -221,8 +212,12 @@ class _TicketViewState extends State<TicketView> {
                             style: widget.isColor==null?Style.headlineStyle4.copyWith(color: Colors.white):Style.headlineStyle4,
                           ),
                         ],
-                      ),
-                      Column(
+                      ),*/
+
+                      AppColumnLayout(firstText:  widget.ticket['number'].toString(),
+                        secondText: "Number",
+                        alignment: CrossAxisAlignment.start,isColor: widget.isColor,),
+                     /* Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
@@ -235,7 +230,7 @@ class _TicketViewState extends State<TicketView> {
                             style:widget.isColor==null? Style.headlineStyle4.copyWith(color: Colors.white):Style.headlineStyle4,
                           ),
                         ],
-                      ),
+                      ),*/
                     ],
                   ),
                 ],
