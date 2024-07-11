@@ -21,7 +21,7 @@ class AppDoubleTextWidget extends StatelessWidget {
           onTap: () {
             print("Tapped");
           },
-          child: Text(
+          child: Text( ////uyfyt
            smallText,
             style: Style.textStyle.copyWith(color: Style.primaryColor),
           ),
